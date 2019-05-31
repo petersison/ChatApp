@@ -48,6 +48,7 @@
 		D0276C0122A0A6CE00256009 /* NewMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
 		D0276C0322A0B75E00256009 /* LoginController+handlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginController+handlers.swift"; sourceTree = "<group>"; };
 		D0276C0522A0B82900256009 /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
+		D0276C0722A0C4FF00256009 /* ChatApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChatApp.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +93,7 @@
 		D0276BD622A0997200256009 /* ChatApp */ = {
 			isa = PBXGroup;
 			children = (
+				D0276C0722A0C4FF00256009 /* ChatApp.entitlements */,
 				D0276BE922A09DEF00256009 /* View */,
 				D0276BEB22A09E0A00256009 /* Helpers */,
 				D0276BEC22A09E1600256009 /* Model */,
@@ -187,6 +189,11 @@
 				TargetAttributes = {
 					D0276BD322A0997200256009 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -438,6 +445,7 @@
 			baseConfigurationReference = 9EB72D5B1DA92799CAAE403A /* Pods-ChatApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ChatApp/ChatApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XDKZ7UQS7H;
 				INFOPLIST_FILE = ChatApp/Info.plist;
@@ -458,6 +466,7 @@
 			baseConfigurationReference = BE2700CEE2A8A2E9C45E5FDD /* Pods-ChatApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ChatApp/ChatApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XDKZ7UQS7H;
 				INFOPLIST_FILE = ChatApp/Info.plist;
