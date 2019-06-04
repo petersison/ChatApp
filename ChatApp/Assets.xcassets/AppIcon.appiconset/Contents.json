@@ -31,15 +31,13 @@
       "scale" : "3x"
     },
     {
-      "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "RoundedIcon-1.png",
+      "size" : "60x60",
       "scale" : "2x"
     },
     {
-      "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "RoundedIcon_180x180.png",
+      "size" : "60x60",
       "scale" : "3x"
     },
     {
@@ -88,9 +86,8 @@
       "scale" : "2x"
     },
     {
-      "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "RoundedIcon_1024x1024.png",
+      "size" : "1024x1024",
       "scale" : "1x"
     }
   ],

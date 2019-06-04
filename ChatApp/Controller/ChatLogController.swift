@@ -55,11 +55,6 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     
     let cellId = "cellId"
     
-    /*
-    fileprivate let headerId = "headerId" // stretchy
-    fileprivate let padding: CGFloat = 16 // stretchy
-    */
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,29 +64,10 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         
-        // stretchy
-        /*
-        collectionView?.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
-        */
         collectionView?.keyboardDismissMode = .interactive
         
         setupKeyboardObservers()
     }
-    
-    /*
-    // stretchy
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath)
-        
-        return header
-    }
-    // stretchy
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        // return width and height
-        return .init(width: view.frame.width, height: 200)
-    }
- */
-    
     
     lazy var inputContainerView: ChatInputContainerView = {
         let chatInputContainerView = ChatInputContainerView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))

@@ -34,24 +34,19 @@ class MessagesController: UITableViewController {
     
     let cellId = "cellId"
     
-   
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
-     
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleNewMessage))
         
-        // Sets navigation items right and left to dark gray (these are not using images, rather 'barbuttonsystemitem'
-        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.darkGray
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.darkGray
-        
+        let image = UIImage(named: "new_message_icon")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleNewMessage))
         
         checkIfUserIsLoggedIn()
         
         tableView.register(UserCell.self, forCellReuseIdentifier: cellId)
-       
+        
+        //        observeMessages()
     }
     
     var messages = [Message]()
@@ -156,8 +151,7 @@ class MessagesController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-        //72
+        return 72
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -187,7 +181,6 @@ class MessagesController: UITableViewController {
         present(navController, animated: true, completion: nil)
     }
     
-    // Check if user is logged in
     func checkIfUserIsLoggedIn() {
         if Auth.auth().currentUser?.uid == nil {
             perform(#selector(handleLogout), with: nil, afterDelay: 0)
@@ -196,7 +189,6 @@ class MessagesController: UITableViewController {
         }
     }
     
-    // Get user id and
     func fetchUserAndSetupNavBarTitle() {
         guard let uid = Auth.auth().currentUser?.uid else {
             //for some reason uid = nil
@@ -233,7 +225,7 @@ class MessagesController: UITableViewController {
         let profileImageView = UIImageView()
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         profileImageView.contentMode = .scaleAspectFill
-        profileImageView.layer.cornerRadius = 5 //20
+        profileImageView.layer.cornerRadius = 20
         profileImageView.clipsToBounds = true
         if let profileImageUrl = user.profileImageUrl {
             profileImageView.loadImageUsingCacheWithUrlString(profileImageUrl)
@@ -246,7 +238,7 @@ class MessagesController: UITableViewController {
         profileImageView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
         profileImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        profileImageView.heightAnchor.constraint(equalToConstant: 45).isActive = true //originally 40
+        profileImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         let nameLabel = UILabel()
         
@@ -271,7 +263,6 @@ class MessagesController: UITableViewController {
         let chatLogController = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
         chatLogController.user = user
         navigationController?.pushViewController(chatLogController, animated: true)
-        
     }
     
     @objc func handleLogout() {
