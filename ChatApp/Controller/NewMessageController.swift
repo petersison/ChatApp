@@ -20,6 +20,9 @@ class NewMessageController: UITableViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         
+        // Sets color of 'Cancel' to dark gray
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.darkGray
+        
         tableView.register(UserCell.self, forCellReuseIdentifier: cellId)
         
         fetchUser()

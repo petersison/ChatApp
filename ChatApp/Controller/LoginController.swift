@@ -24,7 +24,10 @@ class LoginController: UIViewController {
     
     lazy var loginRegisterButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(r: 80, g: 101, b: 161)
+        // LOGIN REGISTER BUTTON COLOR
+       // button.backgroundColor = UIColor(r: 13, g: 200, b: 139) // Green
+        button.backgroundColor = UIColor(r: 51, g: 51, b: 51) // Drak Gray
+        // button.backgroundColor = UIColor(r: 80, g: 101, b: 161) // Original Blue
         button.setTitle("Register", for: UIControl.State())
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: UIControl.State())
@@ -104,7 +107,8 @@ class LoginController: UIViewController {
     
     lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "profile-pic-placeholder")
+        // PROFILE PIC PLACE HOLDER IS CALLED HERE
+        imageView.image = UIImage(named: "profile-pic-placeholder-avatar")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         
@@ -117,7 +121,11 @@ class LoginController: UIViewController {
     lazy var loginRegisterSegmentedControl: UISegmentedControl = {
         let sc = UISegmentedControl(items: ["Login", "Register"])
         sc.translatesAutoresizingMaskIntoConstraints = false
-        sc.tintColor = UIColor.white
+        // LOGIN REGISTER SEGMENTCOLOR SET HERE
+        // sc.tintColor = UIColor(r: 13, g: 200, b: 139) // Green
+        sc.tintColor = UIColor(r: 51, g: 51, b: 51) // Dark Gray
+        //sc.tintColor = UIColor.black // Black
+        // sc.tintColor = UIColor.white // White
         sc.selectedSegmentIndex = 1
         sc.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
         return sc
@@ -148,7 +156,18 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(r: 61, g: 91, b: 151)
+        //Control Backround color on login/registration screen
+        
+        
+       // view.backgroundColor = UIColor(r: 220, g: 240, b: 230) // Light green
+        
+        //view.backgroundColor = UIColor(r: 252, g: 249, b: 236) // Light Yellow
+
+        view.backgroundColor = UIColor(r: 223, g: 230, b: 230) //  Gray
+        
+        //view.backgroundColor = UIColor(r: 255, g: 255, b: 255) // White
+        
+        // original view.backgroundColor = UIColor(r: 61, g: 91, b: 151) // Original Blue
         
         view.addSubview(inputsContainerView)
         view.addSubview(loginRegisterButton)
@@ -243,8 +262,9 @@ class LoginController: UIViewController {
         loginRegisterButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
+    // Change the color of the status bar (displayed at the top of the device)
     override var preferredStatusBarStyle : UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
 }
 
