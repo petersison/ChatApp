@@ -40,7 +40,7 @@ class ChatInputContainerView: UIView, UITextFieldDelegate {
         backgroundColor = .white
         
         addSubview(uploadImageView)
-        //x,y,w,h
+        //Constraints for
         uploadImageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         uploadImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         uploadImageView.widthAnchor.constraint(equalToConstant: 44).isActive = true
@@ -49,18 +49,19 @@ class ChatInputContainerView: UIView, UITextFieldDelegate {
         
         sendButton.setTitle("Send", for: .normal)
         sendButton.translatesAutoresizingMaskIntoConstraints = false
+        sendButton.tintColor = UIColor.gray
         
-        //what is handleSend?
+       
         
         addSubview(sendButton)
-        //x,y,w,h
+        
         sendButton.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         sendButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         sendButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
         sendButton.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
         
         addSubview(self.inputTextField)
-        //x,y,w,h
+        //Constraints for input text field
         self.inputTextField.leftAnchor.constraint(equalTo: uploadImageView.rightAnchor, constant: 8).isActive = true
         self.inputTextField.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         self.inputTextField.rightAnchor.constraint(equalTo: sendButton.leftAnchor).isActive = true
@@ -70,13 +71,13 @@ class ChatInputContainerView: UIView, UITextFieldDelegate {
         separatorLineView.backgroundColor = UIColor(r: 220, g: 220, b: 220)
         separatorLineView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(separatorLineView)
-        //x,y,w,h
+        //
         separatorLineView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         separatorLineView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         separatorLineView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
         separatorLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
-    
+    // Sends message if user taps return button
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         chatLogController?.handleSend()
         return true

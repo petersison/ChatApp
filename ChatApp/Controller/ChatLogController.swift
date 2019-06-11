@@ -317,7 +317,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         }
         
         if message.fromId == Auth.auth().currentUser?.uid {
-            //outgoing blue
+            //OUTGOING MSG
             cell.bubbleView.backgroundColor = ChatMessageCell.blueColor
             cell.textView.textColor = UIColor.white
             cell.profileImageView.isHidden = true
@@ -326,7 +326,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
             cell.bubbleViewLeftAnchor?.isActive = false
             
         } else {
-            //incoming gray
+            //INCOMING MSG
             cell.bubbleView.backgroundColor = UIColor(r: 240, g: 240, b: 240)
             cell.textView.textColor = UIColor.black
             cell.profileImageView.isHidden = false
@@ -357,9 +357,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
             height = estimateFrameForText(text).height + 20
         } else if let imageWidth = message.imageWidth?.floatValue, let imageHeight = message.imageHeight?.floatValue {
             
-            // h1 / w1 = h2 / w2
-            // solve for h1
-            // h1 = h2 / w2 * w1
+           
             
             height = CGFloat(imageHeight / imageWidth * 200)
             
@@ -377,7 +375,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     
     var containerViewBottomAnchor: NSLayoutConstraint?
     
-    // This function initiates the SEND MESSAGE functionality
+    // handleSend() initiates the SEND MESSAGE process
     @objc func handleSend() {
         let properties = ["text": inputContainerView.inputTextField.text!]
         sendMessageWithProperties(properties as [String : AnyObject])
@@ -398,8 +396,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         
         var values: [String: Any] = ["toId": toId, "fromId": fromId, "timestamp": timestamp]
         
-        //append properties dictionary onto values somehow??
-        //key $0, value $1
+        
         properties.forEach({values[$0] = $1})
         
         childRef.updateChildValues(values) { (error, ref) in
