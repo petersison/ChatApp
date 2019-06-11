@@ -1,10 +1,9 @@
 //
 //  LoginController.swift
+//
 //  ChatApp
-//
-//  Created by PS Headquarters on 5/30/19.
+//  Created by John Kang, Danny Lam, Peter Sison
 //  Copyright © 2019 ChatAppMedia. All rights reserved.
-//
 
 import UIKit
 import Firebase
@@ -108,7 +107,7 @@ class LoginController: UIViewController {
     lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         // PROFILE PIC PLACE HOLDER IS CALLED HERE
-        imageView.image = UIImage(named: "profile-pic-placeholder-avatar")
+        imageView.image = UIImage(named: "Chat-App-AppIcon-OG")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         

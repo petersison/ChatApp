@@ -1,10 +1,10 @@
 //
 //  ChatLogController.swift
+//
 //  ChatApp
-//
-//  Created by PS Headquarters on 5/30/19.
+//  Created by John Kang, Danny Lam, Peter Sison
 //  Copyright © 2019 ChatAppMedia. All rights reserved.
-//
+
 
 import UIKit
 import Firebase
@@ -109,6 +109,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         present(imagePickerController, animated: true, completion: nil)
     }
     
+    // Send Video: Functionality allows users to first select a video from their device
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // Local variable inserted by Swift 4.2 migrator.
         let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
@@ -125,6 +126,7 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         dismiss(animated: true, completion: nil)
     }
     
+    // Send Video: This uploads the selected video to Firebase Storage so the recipient can access it
     fileprivate func handleVideoSelectedForUrl(_ url: URL) {
         let filename = UUID().uuidString + ".mov"
         let ref = Storage.storage().reference().child("message_movies").child(filename)
@@ -375,16 +377,18 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     
     var containerViewBottomAnchor: NSLayoutConstraint?
     
+    // This function initiates the SEND MESSAGE functionality
     @objc func handleSend() {
         let properties = ["text": inputContainerView.inputTextField.text!]
         sendMessageWithProperties(properties as [String : AnyObject])
     }
     
+    // Function for sending an image message
     fileprivate func sendMessageWithImageUrl(_ imageUrl: String, image: UIImage) {
         let properties: [String: AnyObject] = ["imageUrl": imageUrl as AnyObject, "imageWidth": image.size.width as AnyObject, "imageHeight": image.size.height as AnyObject]
         sendMessageWithProperties(properties)
     }
-    
+    // 
     fileprivate func sendMessageWithProperties(_ properties: [String: Any]) {
         let ref = Database.database().reference().child("messages")
         let childRef = ref.childByAutoId()

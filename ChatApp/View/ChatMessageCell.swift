@@ -1,10 +1,9 @@
 //
 //  ChatMessageCell.swift
+//
 //  ChatApp
-//
-//  Created by PS Headquarters on 5/30/19.
+//  Created by John Kang, Danny Lam, Peter Sison
 //  Copyright © 2019 ChatAppMedia. All rights reserved.
-//
 
 import UIKit
 import AVFoundation
