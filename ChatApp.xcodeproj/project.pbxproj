@@ -189,7 +189,7 @@
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
 							com.apple.Keychain = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -443,7 +443,6 @@
 			baseConfigurationReference = 9EB72D5B1DA92799CAAE403A /* Pods-ChatApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = ChatApp/ChatApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XDKZ7UQS7H;
 				INFOPLIST_FILE = ChatApp/Info.plist;
@@ -464,7 +463,6 @@
 			baseConfigurationReference = BE2700CEE2A8A2E9C45E5FDD /* Pods-ChatApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = ChatApp/ChatApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XDKZ7UQS7H;
 				INFOPLIST_FILE = ChatApp/Info.plist;

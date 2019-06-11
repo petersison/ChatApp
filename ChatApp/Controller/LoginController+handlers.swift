@@ -11,6 +11,7 @@ import Firebase
 
 extension LoginController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    //All registration related calls to firebase, written here
     func handleRegister() {
         guard let email = emailTextField.text, let password = passwordTextField.text, let name = nameTextField.text else {
             print("Form is not valid")
@@ -28,7 +29,7 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
                 return
             }
             
-            //successfully authenticated user
+            //If auth is successful do this
             let imageName = UUID().uuidString
             let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName).jpg")
             
@@ -69,15 +70,14 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
                 return
             }
             
-            //            self.messagesController?.fetchUserAndSetupNavBarTitle()
-            //            self.messagesController?.navigationItem.title = values["name"] as? String
+            
             let user = User(dictionary: values)
             self.messagesController?.setupNavBarWithUser(user)
             
             self.dismiss(animated: true, completion: nil)
         })
     }
-    
+    //Function for selecting an profile image
     @objc func handleSelectProfileImageView() {
         let picker = UIImagePickerController()
         
@@ -86,7 +86,7 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
         
         present(picker, animated: true, completion: nil)
     }
-    
+    //ImagePicker for selecting a profile image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // Local variable inserted by Swift 4.2 migrator.
         let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)

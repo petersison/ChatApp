@@ -37,6 +37,7 @@ class LoginController: UIViewController {
         return button
     }()
     
+    //Function to direct the user to either Login or Register process, depending on where the segment button is placed
     @objc func handleLoginRegister() {
         if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
             handleLogin()
@@ -45,6 +46,7 @@ class LoginController: UIViewController {
         }
     }
     
+    //For Authentication, we capture email and password to validate
     func handleLogin() {
         guard let email = emailTextField.text, let password = passwordTextField.text else {
             print("Form is not valid")
@@ -58,7 +60,7 @@ class LoginController: UIViewController {
                 return
             }
             
-            //successfully logged in our user
+            //If user logs in successfully, set up the messages controller along with the navbar profile display
             
             self.messagesController?.fetchUserAndSetupNavBarTitle()
             
@@ -107,10 +109,10 @@ class LoginController: UIViewController {
     lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         // PROFILE PIC PLACE HOLDER IS CALLED HERE
-        imageView.image = UIImage(named: "Chat-App-AppIcon-OG")
+        imageView.image = UIImage(named: "AppIcon_og")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
-        
+        //This calls handleSelectProfileImageView in LoginController+handlers.swift so user can select an image for profile
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
         imageView.isUserInteractionEnabled = true
         
@@ -121,10 +123,7 @@ class LoginController: UIViewController {
         let sc = UISegmentedControl(items: ["Login", "Register"])
         sc.translatesAutoresizingMaskIntoConstraints = false
         // LOGIN REGISTER SEGMENTCOLOR SET HERE
-        // sc.tintColor = UIColor(r: 13, g: 200, b: 139) // Green
         sc.tintColor = UIColor(r: 51, g: 51, b: 51) // Dark Gray
-        //sc.tintColor = UIColor.black // Black
-        // sc.tintColor = UIColor.white // White
         sc.selectedSegmentIndex = 1
         sc.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
         return sc
@@ -156,18 +155,8 @@ class LoginController: UIViewController {
         super.viewDidLoad()
         
         //Control Backround color on login/registration screen
-        
-        
-       // view.backgroundColor = UIColor(r: 220, g: 240, b: 230) // Light green
-        
-        //view.backgroundColor = UIColor(r: 252, g: 249, b: 236) // Light Yellow
-
         view.backgroundColor = UIColor(r: 223, g: 230, b: 230) //  Gray
-        
-        //view.backgroundColor = UIColor(r: 255, g: 255, b: 255) // White
-        
-        // original view.backgroundColor = UIColor(r: 61, g: 91, b: 151) // Original Blue
-        
+       
         view.addSubview(inputsContainerView)
         view.addSubview(loginRegisterButton)
         view.addSubview(profileImageView)
@@ -180,7 +169,7 @@ class LoginController: UIViewController {
     }
     
     func setupLoginRegisterSegmentedControl() {
-        //need x, y, width, height constraints
+        // Constraints for segment control on login page
         loginRegisterSegmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         loginRegisterSegmentedControl.bottomAnchor.constraint(equalTo: inputsContainerView.topAnchor, constant: -12).isActive = true
         loginRegisterSegmentedControl.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor, multiplier: 1).isActive = true
@@ -188,7 +177,7 @@ class LoginController: UIViewController {
     }
     
     func setupProfileImageView() {
-        //need x, y, width, height constraints
+        // constraints for profile image placeholder
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         profileImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -12).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
@@ -201,7 +190,7 @@ class LoginController: UIViewController {
     var passwordTextFieldHeightAnchor: NSLayoutConstraint?
     
     func setupInputsContainerView() {
-        //need x, y, width, height constraints
+        //constraints for the name, email, password container
         inputsContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         inputsContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         inputsContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
@@ -214,7 +203,7 @@ class LoginController: UIViewController {
         inputsContainerView.addSubview(emailSeparatorView)
         inputsContainerView.addSubview(passwordTextField)
         
-        //need x, y, width, height constraints
+        //name field
         nameTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
         nameTextField.topAnchor.constraint(equalTo: inputsContainerView.topAnchor).isActive = true
         
@@ -222,13 +211,13 @@ class LoginController: UIViewController {
         nameTextFieldHeightAnchor = nameTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/3)
         nameTextFieldHeightAnchor?.isActive = true
         
-        //need x, y, width, height constraints
+        //separator between name fields
         nameSeparatorView.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor).isActive = true
         nameSeparatorView.topAnchor.constraint(equalTo: nameTextField.bottomAnchor).isActive = true
         nameSeparatorView.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         nameSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
-        //need x, y, width, height constraints
+        //email field
         emailTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
         emailTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor).isActive = true
         
@@ -238,13 +227,13 @@ class LoginController: UIViewController {
         
         emailTextFieldHeightAnchor?.isActive = true
         
-        //need x, y, width, height constraints
+        //separator between name field and password field
         emailSeparatorView.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor).isActive = true
         emailSeparatorView.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
         emailSeparatorView.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         emailSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
-        //need x, y, width, height constraints
+        //constraints for password field
         passwordTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
         
@@ -254,19 +243,20 @@ class LoginController: UIViewController {
     }
     
     func setupLoginRegisterButton() {
-        //need x, y, width, height constraints
+        //Constraints for both Login and Register button
         loginRegisterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         loginRegisterButton.topAnchor.constraint(equalTo: inputsContainerView.bottomAnchor, constant: 12).isActive = true
         loginRegisterButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         loginRegisterButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
-    // Change the color of the status bar (displayed at the top of the device)
+    // Changes the color of the status bar (displayed at the top of the device)
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .default
     }
 }
 
+//This is so that R G B colors can easily be updated by changing their values accordingly
 extension UIColor {
     
     convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
